@@ -1,0 +1,139 @@
+robot:
+  # Unique identifier for the robot setup (e.g., aloha_stationary)
+  name: aloha_stationary
+
+  # Leader Arm Configuration (Human-controlled)
+  leader_arms:
+    - # Identifier for the stationary leader arm (naming convention: leader_<unique_identification>)
+      name: leader_right
+
+      # Model type for calibration and compatibility
+      model: aloha_wx250s
+
+      # Orientation or side of the arm (options: left, right)
+      orientation: right
+
+      # Position and orientation of arm in space (applied for visualization tools like RVIZ)
+      transform: [-0.5, -0.25, 0.0, 0.0, 0.0, 0.0, 1.0]
+
+    - # Identifier for the left leader arm
+      name: leader_left
+
+      # Model type for calibration and compatibility
+      model: aloha_wx250s
+
+      # Orientation or side of the arm
+      orientation: left
+
+      # Position and orientation of arm in space
+      transform: [-0.5, 0.25, 0.0, 0.0, 0.0, 0.0, 1.0]
+
+  # Follower Arm Configuration (Robot-controlled)
+  follower_arms:
+    - # Unique name for the stationary follower arm (naming convention: follower_<unique_identification>)
+      name: follower_right
+
+      # Model type for calibration and compatibility
+      model: aloha_vx300s
+
+      # Orientation or side of the arm
+      orientation: right
+
+      # Position and orientation of arm in space
+      transform: [0.5, -0.25, 0.0, 0.0, 0.0, 0.0, 1.0]
+
+    - # Identifier for the left follower arm
+      name: follower_left
+
+      # Model type for calibration and compatibility
+      model: aloha_vx300s
+
+      # Orientation or side of the arm
+      orientation: left
+
+      # Position and orientation of arm in space
+      transform: [0.5, 0.25, 0.0, 0.0, 0.0, 0.0, 1.0]
+
+  # Camera Configuration
+  cameras:
+    # Common parameters for all cameras
+    common_parameters:
+      # preset
+      json_file_path: /home/aloha/interbotix_ws/src/aloha/config/robot/HighAccuracyPreset.json
+
+      # seneors params
+      enable_color: true
+      enable_depth: true
+      enable_infra: false
+      enable_infra1: false
+      enable_infra2: false
+      enable_rgbd: false
+      enable_sync: true
+      align_depth:
+        enable: true
+
+      # RGB configuration for D455
+      rgb_camera:
+          color_profile: 640x360x30
+          color_format: RGB8
+
+      # Depth module configuration
+      depth_module:
+        # NOTE: 640x480 will result in poor depth and color alignment for D405
+        # ref: https://github.com/IntelRealSense/librealsense/issues/11329
+        # ref: https://github.com/IntelRealSense/librealsense/issues/11784
+        # Resolution and FPS for depth sensing (e.g., '640,480,60')
+        depth_profile: 640x360x30
+        depth_format: Z16
+
+        # Resolution and FPS for RGB video (e.g., '640,480,60')
+        color_profile: 640x360x30
+        color_format: RGB8
+
+        # Disables auto exposure for depth consistency (default: false)
+        enable_auto_exposure: false
+        exposure: 20000 # exposure must be lower than ~32200, ref: https://github.com/IntelRealSense/realsense-ros/pull/2612
+
+      # Post-processing filters
+      clip_distance: 4.0
+      disparity_filter:
+        enable: true
+      disparity_to_depth:
+        enable: true
+      decimation_filter:
+        enable: true
+      spatial_filter:
+        enable: true
+      temporal_filter:
+        enable: false
+      hole_filling_filter:
+        enable: false
+
+      color_image_topic_name: "/{}/camera/color/image_rect_raw"
+      aligned_depth_image_topic_name: "/{}/camera/aligned_depth_to_color/image_raw"
+
+    # Individual camera instances with unique parameters
+    camera_instances:
+      - # Identifier for stationary high camera
+        name: camera_high
+        # Serial number for device identification
+        # serial_no: "130322274120" # original high d405
+        serial_no: "213622252685" # new stand d455
+
+      - # Identifier for a stationary low camera
+        name: camera_low
+        # Serial number for device identification
+        serial_no: "130322271268"
+
+      - # Identifier for right wrist camera
+        name: camera_wrist_right
+        # Serial number for device identification
+        serial_no: "130322274120"
+
+      - # Identifier for left wrist camera
+        name: camera_wrist_left
+        # Serial number for device identification
+        serial_no: "130322271656"
+
+  # Base configuration
+  base: false
