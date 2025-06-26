@@ -1,0 +1,6 @@
+<mujoco>
+
+    <include file="scene_mocap.xml"/>
+    <include file="objects/red_box.xml"/>
+
+</mujoco>

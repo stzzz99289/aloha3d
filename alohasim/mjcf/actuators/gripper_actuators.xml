@@ -1,0 +1,6 @@
+<mujoco>
+  <actuator>
+    <position class="finger" name="left/gripper" joint="left/left_finger"/>
+    <position class="finger" name="right/gripper" joint="right/left_finger"/>
+  </actuator>
+</mujoco>

@@ -1,0 +1,7 @@
+<mujoco model="aloha_pickplace_bottle_task">
+
+    <include file="scene_joint_control.xml"/>
+    <include file="objects/bottle.xml"/>
+    <include file="objects/express_box.xml"/>
+
+</mujoco>

@@ -1,0 +1,18 @@
+<mujoco>
+
+    <worldbody>
+
+        <!-- box (len, width, height) = (20cm, 18cm, 10cm) -->
+        <!-- box center position = (0, 21.5cm) -->
+        <body name="box" pos="0.0 0.215 0.0">
+            <joint name="box_joint" type="free"/>
+            <geom condim="4" pos="0 0 0.001" size="0.10 0.09 0.001" type="box" name="box_bottom" rgba="0.671 0.565 0.325 1" mass="0.10"/>
+            <geom condim="4" pos="-0.1 0 0.05" size="0.001 0.09 0.05" type="box" name="box_left" rgba="0.671 0.565 0.325 1" mass="0.10"/>
+            <geom condim="4" pos="0.1 0 0.05" size="0.001 0.09 0.05" type="box" name="box_right" rgba="0.671 0.565 0.325 1" mass="0.10"/>
+            <geom condim="4" pos="0 -0.09 0.05" size="0.10 0.001 0.05" type="box" name="box_front" rgba="0.671 0.565 0.325 1" mass="0.10"/>
+            <geom condim="4" pos="0 0.09 0.05" size="0.10 0.001 0.05" type="box" name="box_end" rgba="0.671 0.565 0.325 1" mass="0.10"/>
+        </body>
+
+    </worldbody>
+
+</mujoco>

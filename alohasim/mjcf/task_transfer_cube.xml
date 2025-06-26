@@ -1,0 +1,6 @@
+<mujoco>
+
+    <include file="scene_joint_control.xml"/>
+    <include file="objects/red_box.xml"/>
+    
+</mujoco>

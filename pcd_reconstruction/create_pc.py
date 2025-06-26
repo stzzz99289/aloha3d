@@ -83,9 +83,9 @@ def load_transformations(res_dir):
 
 if __name__ == "__main__":
     # define data path and name
-    dataset_dir = '/home/tianze/Documents/sim2real2sim/data/real2sim'
-    dataset_name = 'episode_1'
-    transformations_dir = '/home/tianze/Documents/sim2real2sim/cam_calibration/res'
+    dataset_dir = '/home/tianze/Documents/sim2real2sim/data/head'
+    dataset_name = 'episode_0'
+    transformations_dir = '/home/tianze/Documents/sim2real2sim/aloha3d/cam_calibration/res'
 
     # load video data
     qpos, qvel, effort, action, base_action, image_dict = load_hdf5(
@@ -109,7 +109,7 @@ if __name__ == "__main__":
 
         depth_images = image_dict["aligned_depth_images"][camera_name]
         color_images = image_dict["color_images"][camera_name]
-        intrinsic_matrix = np.load(f'/home/tianze/Documents/sim2real2sim/cam_calibration/intrinsics/aloha2/camera_{camera_name}_color_intrinsics.npy')
+        intrinsic_matrix = np.load(f'/home/tianze/Documents/sim2real2sim/aloha3d/cam_calibration/intrinsics/aloha2/camera_{camera_name}_color_intrinsics.npy')
 
         if camera_name == 'camera_high': # camera high is d455 model
             depth_clip = 2.0

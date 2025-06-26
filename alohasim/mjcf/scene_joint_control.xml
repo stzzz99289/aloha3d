@@ -1,0 +1,7 @@
+<mujoco model="aloha_scene_joint_control">
+
+    <include file="scene.xml"/>
+
+    <include file="actuators/joint_position_actuators.xml"/>
+
+</mujoco>
